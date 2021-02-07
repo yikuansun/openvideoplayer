@@ -62,12 +62,20 @@ videoTag.addEventListener("loadeddata", function() {
     };
     fullScreenBtn.addEventListener("click", function() {
         if (!fullscreened) {
-            openFullscreen();
             fullscreened = true;
+            openFullscreen();
         }
         else {
-            closeFullscreen();
             fullscreened = false;
+            closeFullscreen();
+        }
+    });
+    document.body.addEventListener("fullscreenchange", function() {
+        if (!fullscreened) {
+            fullScreenBtn.src = "fullscreen.png";
+        }
+        else {
+            fullScreenBtn.src = "exitfullscreen.png";
         }
     });
 });
