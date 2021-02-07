@@ -15,6 +15,7 @@ document.querySelector("input[type=range]").addEventListener("focus", function()
 sliderBar = document.querySelector("input[type=range]");
 videoTag = document.querySelector("video");
 playBtn = document.querySelector("#pausePlay");
+fullScreenBtn = document.querySelector("#fullScreen");
 videoTag.addEventListener("loadeddata", function() {
     sliderBar.setAttribute("min", 0); sliderBar.setAttribute("max", videoTag.duration);
     sliderBar.setAttribute("step", 0.01);
@@ -40,4 +41,33 @@ videoTag.addEventListener("loadeddata", function() {
         }
     });
     videoTag.addEventListener("ended", pauseVid);
+    fullscreened = false;
+    openFullscreen = function() {
+        if (document.body.requestFullscreen) {
+            document.body.requestFullscreen();
+        } else if (document.body.webkitRequestFullscreen) { /* Safari */
+            document.body.webkitRequestFullscreen();
+        } else if (document.body.msRequestFullscreen) { /* IE11 */
+            document.body.msRequestFullscreen();
+        }
+    };
+    closeFullscreen = function() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    };
+    fullScreenBtn.addEventListener("click", function() {
+        if (!fullscreened) {
+            openFullscreen();
+            fullscreened = true;
+        }
+        else {
+            closeFullscreen();
+            fullscreened = false;
+        }
+    });
 });
