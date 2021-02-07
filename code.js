@@ -24,11 +24,18 @@ videoTag.addEventListener("loadeddata", function() {
     pausePlay.addEventListener("click", function() {
         if (videoTag.paused) {
             myInterval = setInterval(function() { sliderBar.value = videoTag.currentTime; }, 20);
+            playBtn.style.backgroundImage = "url(pause.png)";
             videoTag.play();
         }
         else {
             clearInterval(myInterval);
+            playBtn.style.backgroundImage = "url(play.png)";
             videoTag.pause();
         }
+    });
+    videoTag.addEventListener("ended", function() {
+        clearInterval(myInterval);
+        playBtn.style.backgroundImage = "url(play.png)";
+        videoTag.pause();
     });
 });
