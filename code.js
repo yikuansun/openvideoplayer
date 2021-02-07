@@ -21,21 +21,23 @@ videoTag.addEventListener("loadeddata", function() {
     sliderBar.addEventListener("input", function() {
         videoTag.currentTime = this.value;
     });
-    pausePlay.addEventListener("click", function() {
-        if (videoTag.paused) {
-            myInterval = setInterval(function() { sliderBar.value = videoTag.currentTime; }, 20);
-            playBtn.src = "pause.png";
-            videoTag.play();
-        }
-        else {
-            clearInterval(myInterval);
-            playBtn.src = "play.png";
-            videoTag.pause();
-        }
-    });
-    videoTag.addEventListener("ended", function() {
+    playVid = function() {
+        myInterval = setInterval(function() { sliderBar.value = videoTag.currentTime; }, 20);
+        playBtn.src = "pause.png";
+        videoTag.play();
+    };
+    pauseVid = function() {
         clearInterval(myInterval);
         playBtn.src = "play.png";
         videoTag.pause();
+    };
+    pausePlay.addEventListener("click", function() {
+        if (videoTag.paused) {
+            playVid();
+        }
+        else {
+            pauseVid();
+        }
     });
+    videoTag.addEventListener("ended", pauseVid);
 });
