@@ -41,7 +41,6 @@ videoTag.addEventListener("loadeddata", function() {
         }
     });
     videoTag.addEventListener("ended", pauseVid);
-    fullscreened = false;
     openFullscreen = function() {
         if (document.body.requestFullscreen) {
             document.body.requestFullscreen();
@@ -61,21 +60,19 @@ videoTag.addEventListener("loadeddata", function() {
         }
     };
     fullScreenBtn.addEventListener("click", function() {
-        if (!fullscreened) {
-            fullscreened = true;
-            openFullscreen();
+        if (document.webkitIsFullScreen) {
+            closeFullscreen();
         }
         else {
-            fullscreened = false;
-            closeFullscreen();
+            openFullscreen();
         }
     });
     document.body.addEventListener("fullscreenchange", function() {
-        if (!fullscreened) {
-            fullScreenBtn.src = "fullscreen.png";
+        if (document.webkitIsFullScreen) {
+            fullScreenBtn.src = "exitfullscreen.png";
         }
         else {
-            fullScreenBtn.src = "exitfullscreen.png";
+            fullScreenBtn.src = "fullscreen.png";
         }
     });
 });
