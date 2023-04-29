@@ -33,7 +33,7 @@ input[type=range] {
     background-color: #00000081;
 }
 
-.wall {
+#wall {
     width: 100%;
     height: 100%;
     position: fixed;
