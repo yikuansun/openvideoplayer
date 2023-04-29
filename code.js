@@ -25,21 +25,15 @@ videoTag.addEventListener("loadeddata", function() {
     var myInterval
     var playVid = function() {
         myInterval = setInterval(function() { sliderBar.value = videoTag.currentTime; }, 1000 / 60);
-        playBtn.src = "pause.png";
         videoTag.play();
     };
     var pauseVid = function() {
         clearInterval(myInterval);
-        playBtn.src = "play.png";
         videoTag.pause();
     };
-    pausePlay.addEventListener("click", function() {
-        if (videoTag.paused) {
-            playVid();
-        }
-        else {
-            pauseVid();
-        }
+    pausePlay.addEventListener("change", function() {
+        if (this.checked) playVid();
+        else pauseVid();
     });
     videoTag.addEventListener("ended", pauseVid);
     var openFullscreen = function() {
