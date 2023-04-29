@@ -17,7 +17,7 @@ var videoTag = document.querySelector("video");
 var playBtn = document.querySelector("#pausePlay");
 var fullScreenBtn = document.querySelector("#fullScreen");
 videoTag.addEventListener("loadeddata", function() {
-    sliderBar.setAttribute("min", 0); sliderBar.setAttribute("max", videoTag.duration);
+    sliderBar.setAttribute("min", 0); sliderBar.setAttribute("max", Math.floor(videoTag.duration));
     sliderBar.setAttribute("step", 0.001);
     sliderBar.addEventListener("input", function() {
         videoTag.currentTime = this.value;
