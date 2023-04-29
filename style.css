@@ -1,0 +1,20 @@
+#pausePlay, #fullScreen {
+    display: none;
+}
+
+#pausePlay ~ label::after {
+    content: "play_arrow";
+    color: white;
+}
+#pausePlay:checked ~ label::after {
+    content: "pause"!important;
+}
+
+#fullScreen ~ label::after {
+    content: "fullscreen";
+    color: white;
+}
+#fullScreen:checked ~ label::after {
+    content: "close_fullscreen"!important;
+    color: white;
+}
