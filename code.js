@@ -1,5 +1,5 @@
 var params = new URLSearchParams(location.search);
-var url = params.get("uri");
+var url = params.get("v");
 
 var sourceelem = document.createElement("source");
 sourceelem.setAttribute("src", url);
