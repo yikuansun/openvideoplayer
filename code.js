@@ -22,6 +22,13 @@ videoTag.addEventListener("loadeddata", function() {
     sliderBar.addEventListener("input", function() {
         videoTag.currentTime = this.value;
     });
+
+    var startTime = params.get("s");
+    if (startTime) {
+        videoTag.currentTime = parseFloat(startTime);
+        sliderBar.value = videoTag.currentTime;
+    }
+    
     var myInterval
     var playVid = function() {
         myInterval = setInterval(function() { sliderBar.value = videoTag.currentTime; }, 1000 / 60);
