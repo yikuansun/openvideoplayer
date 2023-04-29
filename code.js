@@ -31,11 +31,14 @@ videoTag.addEventListener("loadeddata", function() {
         clearInterval(myInterval);
         videoTag.pause();
     };
-    pausePlay.addEventListener("change", function() {
+    playBtn.addEventListener("change", function() {
         if (this.checked) playVid();
         else pauseVid();
     });
-    videoTag.addEventListener("ended", pauseVid);
+    videoTag.addEventListener("ended", function() {
+        pauseVid();
+        playBtn.checked = false;
+    });
     var openFullscreen = function() {
         if (document.body.requestFullscreen) {
             document.body.requestFullscreen();
