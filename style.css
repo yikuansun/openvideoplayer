@@ -22,3 +22,7 @@
 input[type=range] {
     accent-color: deepskyblue;
 }
+
+.controlPanel {
+    background-color: #00000081;
+}
