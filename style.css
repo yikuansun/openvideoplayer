@@ -18,3 +18,7 @@
     content: "close_fullscreen"!important;
     color: white;
 }
+
+input[type=range] {
+    accent-color: deepskyblue;
+}
