@@ -31,6 +31,7 @@ input[type=range] {
     z-index: 5;
     border-spacing: 10px;
     background-color: #00000081;
+    transition: bottom 0.5s;
 }
 
 #wall {
@@ -40,4 +41,11 @@ input[type=range] {
     z-index: 2;
     top: 0;
     left: 0;
+}
+
+.controlPanel {
+    bottom: -80px;
+}
+body:hover .controlPanel {
+    bottom: 0;
 }
